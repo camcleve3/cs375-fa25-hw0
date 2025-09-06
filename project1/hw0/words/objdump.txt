@@ -1,0 +1,46 @@
+1) What file format is used for this binary? And what architecture is it compiled for?
+- File format: elf64-x86-64
+- Architecture: i386:x86-64
+
+2) What are some of the names of segment/sections you find?
+- .interp
+- .note.gnu.property
+- .note.gnu.build-id
+- .note.ABI-tag
+- .gnu.hash
+- .dynsym
+- .dynstr
+- .gnu.version
+- .gnu.version_r
+- .rela.dyn
+- .rela.plt
+- .init
+- .plt
+- .plt.got
+- .plt.sec
+- .text
+- .fini
+- .rodata
+- .eh_frame_hdr
+- .eh_frame
+- .init_array
+- .fini_array
+- .dynamic
+- .got
+- .data
+- .bss
+- .comment
+- .debug_aranges
+- .debug_info
+- .debug_abbrev
+- .debug_line
+- .debug_str
+- .debug_line_str
+
+3) What segment/section contains main (the function) and what is the address of main?
+- The main function is in the .text section.
+- The address of main is 0000000000001229.
+
+4) Do you see the stack segment anywhere? What about the heap? Explain.
+- There is a STACK segment listed in the Program Header, but its size is zero. This means the stack is managed by the OS at runtime and is not stored in the binary.
+- There is no explicit heap segment or section in the binary. The heap is also managed by the OS at runtime and does not appear as a section in the objdump output.

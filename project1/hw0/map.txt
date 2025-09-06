@@ -1,0 +1,24 @@
+1) Which addresses from the output of running ./map are defined in the executable, and which segment/section is each defined in?
+- main: Defined in the .text section.
+- foo (static): Defined in the .data section.
+- stuff (static, pre-init): Defined in the .data section.
+
+2) Important segments and their uses:
+- .text: Executable code (functions like main and recur).
+- .data: Initialized global/static variables (foo, stuff).
+- .bss: Uninitialized global/static variables.
+- .rodata: Read-only data (string literals).
+- Heap: Managed at runtime via malloc, not a section in the binary.
+- Stack: Managed by the OS at runtime, not a section in the binary.
+
+3) What direction is the stack growing in?
+- The stack grows downward (toward lower addresses), as seen in the recur call stack addresses.
+
+4) How large is the stack frame for each recursive call?
+- The difference between consecutive stack addresses is about 0x30 (48 bytes).
+
+5) Where is the heap? What direction is it growing in?
+- Heap addresses (malloc 1 and malloc 2) are increasing, so the heap grows upward (toward higher addresses).
+
+6) Are the two malloc'ed memory areas contiguous?
+- The addresses differ by 0x70 (112 bytes), so they are close but not strictly contiguous; there may be allocator metadata or alignment padding between them.
